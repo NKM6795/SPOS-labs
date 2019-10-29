@@ -53,7 +53,7 @@ void* CalculateG(void* x)
 void* WaitStop()
 {
 #ifdef WAIT_ESC
-    printw("The program works, click 'esc' to stop the program\n");
+    printw("Click 'esc' to stop the program\n");
     refresh();
     noecho();
     keypad(stdscr, true);
@@ -73,7 +73,7 @@ void* WaitStop()
         sleep(2);
         waitStopResult = WAITING_FOR_USER_INPUT;
 
-        printw("The program works, click\n\t'a' to continue\n\t'b' to continue without prompt\n\t'c' to cancel\n");
+        printw("The program is working, click\n\t'a' to continue\n\t'b' to continue without prompt\n\t'c' to cancel\n");
         refresh();
         while (true)
         {
@@ -115,6 +115,7 @@ void stop_program()
     {
         printw("G function was not calculated\n");
     }
+    printw("Result: undefined\n");
     refresh();
 }
 
@@ -164,6 +165,10 @@ int main()
 
         int x;
         scanw("%d", &x);
+
+        clear();
+        printw("\nProgram was started with X  = %d\n", x);
+        refresh();
 
         if (x == -1)
         {
